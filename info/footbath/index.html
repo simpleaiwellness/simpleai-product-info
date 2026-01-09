@@ -1,532 +1,514 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Information | 简艾 simple ai Wellness</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-bg: #FAFAF8;
-            --color-surface: #FFFFFF;
-            --color-primary: #2D5A4A;
-            --color-primary-light: #E8F0ED;
-            --color-warning: #C4652A;
-            --color-warning-light: #FEF3EB;
-            --color-danger: #B83535;
-            --color-danger-light: #FEECEC;
-            --color-text: #1A1A1A;
-            --color-text-secondary: #5A5A5A;
-            --color-border: #E5E5E3;
-            --font-en: 'Plus Jakarta Sans', sans-serif;
-            --font-cn: 'Noto Sans SC', sans-serif;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: var(--font-en);
-            background: var(--color-bg);
-            color: var(--color-text);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        .cn {
-            font-family: var(--font-cn);
-        }
-
-        header {
-            background: var(--color-surface);
-            border-bottom: 1px solid var(--color-border);
-            padding: 1rem 1.25rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .header-content {
-            max-width: 600px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--color-primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        .logo-text {
-            font-weight: 600;
-            font-size: 1rem;
-        }
-
-        .lang-toggle {
-            display: flex;
-            background: var(--color-bg);
-            border-radius: 6px;
-            padding: 2px;
-            gap: 2px;
-        }
-
-        .lang-btn {
-            padding: 0.375rem 0.75rem;
-            border: none;
-            background: transparent;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8125rem;
-            font-weight: 500;
-            color: var(--color-text-secondary);
-            transition: all 0.2s;
-        }
-
-        .lang-btn.active {
-            background: var(--color-surface);
-            color: var(--color-text);
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-        }
-
-        main {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 1.5rem 1.25rem 3rem;
-        }
-
-        .product-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .product-name {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .product-subtitle {
-            color: var(--color-text-secondary);
-            font-size: 0.9375rem;
-        }
-
-        section {
-            background: var(--color-surface);
-            border-radius: 12px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-            border: 1px solid var(--color-border);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 0.625rem;
-            margin-bottom: 1rem;
-        }
-
-        .section-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .section-icon svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .section-icon.info {
-            background: var(--color-primary-light);
-            color: var(--color-primary);
-        }
-
-        .section-icon.warning {
-            background: var(--color-warning-light);
-            color: var(--color-warning);
-        }
-
-        .section-icon.danger {
-            background: var(--color-danger-light);
-            color: var(--color-danger);
-        }
-
-        .section-title {
-            font-size: 1.0625rem;
-            font-weight: 600;
-        }
-
-        .content-list {
-            list-style: none;
-        }
-
-        .content-list li {
-            padding: 0.625rem 0;
-            border-bottom: 1px solid var(--color-border);
-            display: flex;
-            gap: 0.75rem;
-        }
-
-        .content-list li:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .content-list li:first-child {
-            padding-top: 0;
-        }
-
-        .list-number {
-            width: 22px;
-            height: 22px;
-            background: var(--color-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-text-secondary);
-            flex-shrink: 0;
-            margin-top: 0.125rem;
-        }
-
-        .list-content {
-            flex: 1;
-        }
-
-        .list-content p {
-            font-size: 0.9375rem;
-        }
-
-        .list-content .cn {
-            color: var(--color-text-secondary);
-            font-size: 0.875rem;
-            margin-top: 0.25rem;
-        }
-
-        .warning-box {
-            background: var(--color-warning-light);
-            border: 1px solid #F5D4BC;
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
-        .warning-box .section-header {
-            margin-bottom: 0.75rem;
-        }
-
-        .warning-box .section-title {
-            color: var(--color-warning);
-        }
-
-        .warning-list li {
-            color: var(--color-text);
-            font-size: 0.9375rem;
-            padding: 0.375rem 0;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-
-        .warning-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--color-warning);
-            font-weight: bold;
-        }
-
-        .danger-box {
-            background: var(--color-danger-light);
-            border: 1px solid #F5C4C4;
-            border-radius: 8px;
-            padding: 1rem;
-        }
-
-        .danger-box .section-title {
-            color: var(--color-danger);
-        }
-
-        .danger-list li::before {
-            color: var(--color-danger);
-        }
-
-        .contact-section {
-            text-align: center;
-            padding: 1.5rem;
-        }
-
-        .contact-title {
-            font-size: 0.9375rem;
-            color: var(--color-text-secondary);
-            margin-bottom: 1rem;
-        }
-
-        .contact-buttons {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .contact-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.25rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9375rem;
-            transition: all 0.2s;
-        }
-
-        .contact-btn.whatsapp {
-            background: #25D366;
-            color: white;
-        }
-
-        .contact-btn.whatsapp:hover {
-            background: #20BD5A;
-        }
-
-        .contact-btn.email {
-            background: var(--color-bg);
-            color: var(--color-text);
-            border: 1px solid var(--color-border);
-        }
-
-        .contact-btn.email:hover {
-            background: var(--color-border);
-        }
-
-        .contact-btn svg {
-            width: 18px;
-            height: 18px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            color: var(--color-text-secondary);
-            font-size: 0.8125rem;
-        }
-
-        footer a {
-            color: var(--color-primary);
-            text-decoration: none;
-        }
-
-        /* Language visibility */
-        [data-lang="cn"] {
-            display: none;
-        }
-
-        body.lang-cn [data-lang="en"] {
-            display: none;
-        }
-
-        body.lang-cn [data-lang="cn"] {
-            display: block;
-        }
-
-        body.lang-cn .list-content .cn {
-            display: none;
-        }
-
-        /* Both languages mode (default) */
-        body.lang-both [data-lang="en"],
-        body.lang-both [data-lang="cn"] {
-            display: block;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="simple ai Mugwort Footbath Pack — Directions, cautions, ingredients, and manufacturer information." />
+  <title>simple ai | Mugwort Footbath Pack</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#111111;
+      --muted:#666666;
+      --card:#f6f6f6;
+      --border:#e6e6e6;
+      --accent:#0b6b3a;
+      --warn:#8a3d00;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 760px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--fg);
+      background:linear-gradient(180deg, #fbfbfb 0%, var(--bg) 40%);
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{
+      padding:18px 18px 8px;
+      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,.85);
+      backdrop-filter:saturate(1.2) blur(8px);
+      position:sticky; top:0; z-index:10;
+    }
+    .wrap{max-width:var(--max); margin:0 auto}
+    .top{
+      display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      min-width: 240px;
+    }
+    .brand .name{font-weight:700; letter-spacing:.2px}
+    .brand .sub{color:var(--muted); font-size:13px}
+    .controls{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border:1px solid var(--border); border-radius:999px; background:#fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+    }
+    select, button{
+      font:inherit;
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 10px;
+      cursor:pointer;
+    }
+    button.primary{
+      background:var(--accent);
+      border-color:var(--accent);
+      color:#fff;
+    }
+    main{padding:18px}
+    .hero{
+      display:flex; flex-direction:column; gap:10px;
+      padding:18px; border:1px solid var(--border); border-radius:var(--radius);
+      background:#fff;
+      box-shadow: var(--shadow);
+    }
+    .hero h1{margin:0; font-size:22px; line-height:1.2}
+    .badges{display:flex; gap:8px; flex-wrap:wrap}
+    .badge{
+      padding:6px 10px; border-radius:999px; background:var(--card);
+      border:1px solid var(--border); font-size:13px; color:#222;
+    }
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 740px){
+      .grid{grid-template-columns: 1fr 1fr;}
+    }
+    section.card{
+      padding:16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    }
+    section.card h2{margin:0 0 10px; font-size:16px}
+    .muted{color:var(--muted)}
+    ol, ul{margin:10px 0 0 18px; padding:0}
+    li{margin:6px 0}
+    .callout{
+      border-left:4px solid var(--warn);
+      background: #fff7f0;
+      padding:12px 12px 12px 14px;
+      border-radius: 12px;
+      border:1px solid #ffe3cf;
+    }
+    .kv{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap:8px 12px;
+      margin-top:8px;
+      font-size:14px;
+    }
+    .kv div.k{color:var(--muted)}
+    .footer{
+      margin:18px 0 30px;
+      padding:14px 16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:var(--card);
+      color:#333;
+      font-size:13px;
+    }
+    .small{font-size:12px}
+    .mono{font-family:var(--mono)}
+    .lang-note{font-size:12px; color:var(--muted)}
+    .hide{display:none!important}
+  </style>
 </head>
-<body class="lang-both">
-    <header>
-        <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon cn">艾</div>
-                <span class="logo-text">简艾 Simple AI</span>
-            </div>
-            <div class="lang-toggle">
-                <button class="lang-btn" onclick="setLang('en')">EN</button>
-                <button class="lang-btn active" onclick="setLang('both')">双语</button>
-                <button class="lang-btn" onclick="setLang('cn')">中文</button>
-            </div>
-        </div>
-    </header>
+<body>
+  <header>
+    <div class="wrap top">
+      <div class="brand" aria-label="Brand">
+        <div class="name">simple ai 简艾</div>
+        <div class="sub" data-i18n="tagline">Making Wellness Simple with Moxa</div>
+      </div>
 
-    <main>
-        <div class="product-header">
-            <h1 class="product-name" data-lang="en">Smart Moxibustion Chamber</h1>
-            <h1 class="product-name cn" data-lang="cn">智能艾灸舱</h1>
-            <p class="product-subtitle" data-lang="en">Usage Instructions & Safety Information</p>
-            <p class="product-subtitle cn" data-lang="cn">使用说明及安全信息</p>
+      <div class="controls" aria-label="Controls">
+        <div class="pill" title="Select formula (optional)">
+          <span class="muted" data-i18n="formula_label">Formula</span>
+          <select id="formulaSelect" aria-label="Formula">
+            <option value="general" selected data-i18n="formula_general">General</option>
+            <option value="cold">COLD</option>
+            <option value="damp">DAMP</option>
+            <option value="sleep">SLEEP</option>
+            <option value="slimming">SLIMMING</option>
+          </select>
         </div>
 
-        <!-- Instructions Section -->
-        <section>
-            <div class="section-header">
-                <div class="section-icon info">
-                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-                    </svg>
-                </div>
-                <h2 class="section-title" data-lang="en">How to Use</h2>
-                <h2 class="section-title cn" data-lang="cn">使用方法</h2>
-            </div>
-            <ol class="content-list">
-                <li>
-                    <span class="list-number">1</span>
-                    <div class="list-content">
-                        <p data-lang="en">Remove all metal jewelry and accessories before entering the chamber.</p>
-                        <p class="cn" data-lang="cn">进入艾灸舱前，请取下所有金属首饰和配饰。</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="list-number">2</span>
-                    <div class="list-content">
-                        <p data-lang="en">Change into the provided comfortable clothing or disposable gown.</p>
-                        <p class="cn" data-lang="cn">换上提供的舒适衣物或一次性长袍。</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="list-number">3</span>
-                    <div class="list-content">
-                        <p data-lang="en">Lie down comfortably in the chamber. Our staff will adjust settings for you.</p>
-                        <p class="cn" data-lang="cn">舒适地躺在舱内，我们的工作人员会为您调整设置。</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="list-number">4</span>
-                    <div class="list-content">
-                        <p data-lang="en">Session duration: 30–45 minutes. You may feel gentle warmth.</p>
-                        <p class="cn" data-lang="cn">疗程时间：30–45分钟。您可能会感到温和的热感。</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="list-number">5</span>
-                    <div class="list-content">
-                        <p data-lang="en">Drink warm water after your session. Avoid cold drinks for 2 hours.</p>
-                        <p class="cn" data-lang="cn">疗程后请喝温水，2小时内避免冷饮。</p>
-                    </div>
-                </li>
-            </ol>
+        <div class="pill" title="Choose language">
+          <span class="muted" data-i18n="language_label">Language</span>
+          <select id="langSelect" aria-label="Language">
+            <option value="en" selected>English</option>
+            <option value="zh">中文</option>
+            <option value="bm">BM</option>
+          </select>
+        </div>
+
+        <button id="copyLinkBtn" class="primary" type="button" data-i18n="copy_link">Copy link</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="hero" role="region" aria-label="Product overview">
+        <h1 data-i18n="title">Mugwort Footbath Pack</h1>
+        <div class="badges" aria-label="Quick facts">
+          <span class="badge" data-i18n="quick_1">1 sachet (30g)</span>
+          <span class="badge" data-i18n="quick_2">43–45°C</span>
+          <span class="badge" data-i18n="quick_3">20–25 minutes</span>
+        </div>
+        <div class="lang-note" data-i18n="note">
+          This page provides directions, cautions, ingredients, and manufacturer information for the product.
+        </div>
+      </div>
+
+      <div class="grid" aria-label="Content">
+        <section class="card" aria-label="Directions">
+          <h2 data-i18n="directions_h">Directions for Use</h2>
+          <ol>
+            <li data-i18n="dir_1">Place 1 sachet into a foot tub.</li>
+            <li data-i18n="dir_2">Add hot water and steep 3–5 minutes to release the herbs.</li>
+            <li data-i18n="dir_3">Adjust temperature to 43–45°C.</li>
+            <li data-i18n="dir_4">Soak feet for 20–25 minutes.</li>
+          </ol>
+          <div class="small muted" style="margin-top:10px" data-i18n="dir_tip">
+            Tip: Add water gradually and test temperature before soaking.
+          </div>
         </section>
 
-        <!-- Warnings Section -->
-        <section>
-            <div class="warning-box">
-                <div class="section-header">
-                    <div class="section-icon warning">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-                        </svg>
-                    </div>
-                    <h2 class="section-title" data-lang="en">Cautions</h2>
-                    <h2 class="section-title cn" data-lang="cn">注意事项</h2>
-                </div>
-                <ul class="content-list warning-list">
-                    <li data-lang="en">Do not use if you have a fever or acute inflammation</li>
-                    <li class="cn" data-lang="cn">发烧或急性炎症期间请勿使用</li>
-                    <li data-lang="en">Avoid use within 1 hour after meals</li>
-                    <li class="cn" data-lang="cn">饭后1小时内避免使用</li>
-                    <li data-lang="en">Stay hydrated — drink water before and after sessions</li>
-                    <li class="cn" data-lang="cn">保持水分 — 疗程前后请多喝水</li>
-                    <li data-lang="en">If you feel dizzy or uncomfortable, alert staff immediately</li>
-                    <li class="cn" data-lang="cn">如感到头晕或不适，请立即告知工作人员</li>
-                    <li data-lang="en">Avoid showering immediately after; wait at least 4 hours</li>
-                    <li class="cn" data-lang="cn">疗程后请勿立即洗澡，至少等待4小时</li>
-                </ul>
-            </div>
+        <section class="card" aria-label="Caution">
+          <h2 data-i18n="caution_h">Caution</h2>
+          <div class="callout">
+            <ul>
+              <li data-i18n="cau_1">For external use only. Do not ingest.</li>
+              <li data-i18n="cau_2">Not recommended during pregnancy.</li>
+              <li data-i18n="cau_3">Do not use on broken, swollen, or infected skin.</li>
+              <li data-i18n="cau_4">Discontinue use if discomfort, redness, itching, or burning occurs.</li>
+              <li data-i18n="cau_5">Keep out of reach of children.</li>
+              <li data-i18n="cau_6">This product is not a substitute for medicines or medical devices.</li>
+            </ul>
+          </div>
         </section>
 
-        <!-- Contraindications Section -->
-        <section>
-            <div class="danger-box">
-                <div class="section-header">
-                    <div class="section-icon danger">
-                        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>
-                        </svg>
-                    </div>
-                    <h2 class="section-title" data-lang="en">Do NOT Use If</h2>
-                    <h2 class="section-title cn" data-lang="cn">禁忌人群</h2>
-                </div>
-                <ul class="content-list warning-list danger-list">
-                    <li data-lang="en">Pregnant or breastfeeding</li>
-                    <li class="cn" data-lang="cn">孕妇或哺乳期妇女</li>
-                    <li data-lang="en">You have a pacemaker or implanted medical device</li>
-                    <li class="cn" data-lang="cn">装有心脏起搏器或植入式医疗设备</li>
-                    <li data-lang="en">You have severe heart disease or high blood pressure</li>
-                    <li class="cn" data-lang="cn">严重心脏病或高血压患者</li>
-                    <li data-lang="en">You have open wounds or skin infections</li>
-                    <li class="cn" data-lang="cn">有开放性伤口或皮肤感染</li>
-                    <li data-lang="en">You are under the influence of alcohol</li>
-                    <li class="cn" data-lang="cn">饮酒后</li>
-                    <li data-lang="en">Children under 12 years without adult supervision</li>
-                    <li class="cn" data-lang="cn">12岁以下儿童需成人陪同</li>
-                </ul>
-            </div>
+        <section class="card" aria-label="Storage">
+          <h2 data-i18n="storage_h">Storage</h2>
+          <p class="muted" style="margin:0" data-i18n="storage_p">
+            Store in a cool, dry place. Avoid direct sunlight. Keep sealed after opening.
+          </p>
         </section>
 
-        <!-- Contact Section -->
-        <section class="contact-section">
-            <p class="contact-title" data-lang="en">Questions? Contact us</p>
-            <p class="contact-title cn" data-lang="cn">有疑问？联系我们</p>
-            <div class="contact-buttons">
-                <a href="https://wa.me/60123456789?text=Hi,%20I%20have%20a%20question%20about%20the%20moxibustion%20chamber" class="contact-btn whatsapp">
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                    WhatsApp
-                </a>
-                <a href="mailto:hello@simpleaiwellness.com" class="contact-btn email">
-                    <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                    </svg>
-                    Email
-                </a>
-            </div>
+        <section class="card" aria-label="Ingredients">
+          <h2 data-i18n="ingredients_h">Ingredients</h2>
+          <p class="muted" style="margin:0" data-i18n="ing_p">
+            Mugwort, Safflower, Sappan Wood, Vaccaria Seed, Glossy Privet Fruit, Cinnamon Twig, Mulberry Twig,
+            Motherwort, Sargentodoxa Vine, Selaginella Herb, Tangerine Peel, Peony Flower.
+          </p>
+          <div class="small muted" style="margin-top:10px" data-i18n="ing_note">
+            Ingredients listed reflect the current packaging. If your supplier updates the formula, update this page accordingly.
+          </div>
         </section>
-    </main>
 
-    <footer>
-        <p>© 2025 简艾 simple ai Wellness</p>
-        <p><a href="https://simpleaiwellness.com">simpleaiwellness.com</a></p>
-    </footer>
+        <section class="card" aria-label="Manufacturer">
+          <h2 data-i18n="mfg_h">Manufacturer Information</h2>
+          <div class="kv" role="list">
+            <div class="k" role="listitem" data-i18n="mfg_name_k">Manufacturer</div>
+            <div data-i18n="mfg_name_v">Henan Zhongchun Mugwort Biotechnology Co., Ltd.</div>
 
-    <script>
-        function setLang(lang) {
-            document.body.className = 'lang-' + lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-    </script>
+            <div class="k" role="listitem" data-i18n="mfg_addr_k">Address</div>
+            <div data-i18n="mfg_addr_v">Wagang Town, Queshan County, Henan Province, China</div>
+
+            <div class="k" role="listitem" data-i18n="mfg_origin_k">Origin</div>
+            <div data-i18n="mfg_origin_v">Made in China</div>
+          </div>
+        </section>
+
+        <section class="card" aria-label="Formula notes">
+          <h2 data-i18n="formula_h">Formula Notes (Optional)</h2>
+
+          <div id="formula_general" class="formulaBlock">
+            <p class="muted" style="margin:0" data-i18n="formula_general_p">
+              Select a formula at the top if you want the page to display an additional short note (for example, COLD / DAMP / SLEEP / SLIMMING).
+            </p>
+          </div>
+
+          <div id="formula_cold" class="formulaBlock hide">
+            <p class="muted" style="margin:0" data-i18n="formula_cold_p">
+              COLD formula: warming and soothing; intended for those who feel cold easily.
+            </p>
+          </div>
+
+          <div id="formula_damp" class="formulaBlock hide">
+            <p class="muted" style="margin:0" data-i18n="formula_damp_p">
+              DAMP formula: supports comfort and freshness; intended for humid or “heavy” feeling days.
+            </p>
+          </div>
+
+          <div id="formula_sleep" class="formulaBlock hide">
+            <p class="muted" style="margin:0" data-i18n="formula_sleep_p">
+              SLEEP formula: relaxing routine; intended for winding down before bedtime.
+            </p>
+          </div>
+
+          <div id="formula_slimming" class="formulaBlock hide">
+            <p class="muted" style="margin:0" data-i18n="formula_slimming_p">
+              SLIMMING formula: supports an active routine; intended for everyday wellness habits.
+            </p>
+          </div>
+
+          <div class="small muted" style="margin-top:10px" data-i18n="formula_claims">
+            Please avoid medical claims on this page. Keep wording wellness-oriented.
+          </div>
+        </section>
+      </div>
+
+      <div class="footer" role="contentinfo">
+        <div><strong data-i18n="support_h">Support</strong></div>
+        <div class="small" style="margin-top:6px">
+          <span data-i18n="support_p1">If you have questions about usage, please contact your point of purchase.</span>
+        </div>
+        <div class="small" style="margin-top:10px">
+          <span class="muted" data-i18n="share_tip">Tip:</span>
+          <span class="mono" id="shareUrl"></span>
+        </div>
+      </div>
+
+      <div class="small muted" style="text-align:center; padding-bottom:18px">
+        © <span id="year"></span> simpleaiwellness.com
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const i18n = {
+      en: {
+        tagline: "Making Wellness Simple with Moxa",
+        title: "Mugwort Footbath Pack",
+        note: "This page provides directions, cautions, ingredients, and manufacturer information for the product.",
+        language_label: "Language",
+        formula_label: "Formula",
+        formula_general: "General",
+        copy_link: "Copy link",
+        quick_1: "1 sachet (30g)",
+        quick_2: "43–45°C",
+        quick_3: "20–25 minutes",
+        directions_h: "Directions for Use",
+        dir_1: "Place 1 sachet into a foot tub.",
+        dir_2: "Add hot water and steep 3–5 minutes to release the herbs.",
+        dir_3: "Adjust temperature to 43–45°C.",
+        dir_4: "Soak feet for 20–25 minutes.",
+        dir_tip: "Tip: Add water gradually and test temperature before soaking.",
+        caution_h: "Caution",
+        cau_1: "For external use only. Do not ingest.",
+        cau_2: "Not recommended during pregnancy.",
+        cau_3: "Do not use on broken, swollen, or infected skin.",
+        cau_4: "Discontinue use if discomfort, redness, itching, or burning occurs.",
+        cau_5: "Keep out of reach of children.",
+        cau_6: "This product is not a substitute for medicines or medical devices.",
+        storage_h: "Storage",
+        storage_p: "Store in a cool, dry place. Avoid direct sunlight. Keep sealed after opening.",
+        ingredients_h: "Ingredients",
+        ing_p: "Mugwort, Safflower, Sappan Wood, Vaccaria Seed, Glossy Privet Fruit, Cinnamon Twig, Mulberry Twig, Motherwort, Sargentodoxa Vine, Selaginella Herb, Tangerine Peel, Peony Flower.",
+        ing_note: "Ingredients listed reflect the current packaging. If your supplier updates the formula, update this page accordingly.",
+        mfg_h: "Manufacturer Information",
+        mfg_name_k: "Manufacturer",
+        mfg_name_v: "Henan Zhongchun Mugwort Biotechnology Co., Ltd.",
+        mfg_addr_k: "Address",
+        mfg_addr_v: "Wagang Town, Queshan County, Henan Province, China",
+        mfg_origin_k: "Origin",
+        mfg_origin_v: "Made in China",
+        formula_h: "Formula Notes (Optional)",
+        formula_general_p: "Select a formula at the top if you want the page to display an additional short note (for example, COLD / DAMP / SLEEP / SLIMMING).",
+        formula_cold_p: "COLD formula: warming and soothing; intended for those who feel cold easily.",
+        formula_damp_p: "DAMP formula: supports comfort and freshness; intended for humid or “heavy” feeling days.",
+        formula_sleep_p: "SLEEP formula: relaxing routine; intended for winding down before bedtime.",
+        formula_slimming_p: "SLIMMING formula: supports an active routine; intended for everyday wellness habits.",
+        formula_claims: "Please avoid medical claims on this page. Keep wording wellness-oriented.",
+        support_h: "Support",
+        support_p1: "If you have questions about usage, please contact your point of purchase.",
+        share_tip: "Tip:"
+      },
+      zh: {
+        tagline: "用艾让健康更简单",
+        title: "艾草足浴包",
+        note: "本页面提供使用方法、注意事项、成分与生产信息。",
+        language_label: "语言",
+        formula_label: "配方",
+        formula_general: "通用",
+        copy_link: "复制链接",
+        quick_1: "1包（30g）",
+        quick_2: "43–45°C",
+        quick_3: "20–25分钟",
+        directions_h: "使用方法",
+        dir_1: "取 1 包足浴包置入足浴盆中。",
+        dir_2: "倒入热水浸泡 3–5 分钟以释放草本成分。",
+        dir_3: "加入冷水调至 43–45°C。",
+        dir_4: "浸泡双脚 20–25 分钟。",
+        dir_tip: "提示：加水时请逐步调温，并先试温再泡脚。",
+        caution_h: "注意事项",
+        cau_1: "仅供外用，不可内服。",
+        cau_2: "孕期人士不建议使用。",
+        cau_3: "脚部有伤口、红肿或严重皮肤状况者请勿使用。",
+        cau_4: "若出现不适、红痒或灼热感，请立即停止使用。",
+        cau_5: "请置于儿童无法取得的地方。",
+        cau_6: "本产品不能替代药品和医疗器械。",
+        storage_h: "保存方式",
+        storage_p: "置于阴凉干燥处，避免阳光直射。开封后请密封保存。",
+        ingredients_h: "成分",
+        ing_p: "艾段、红花、苏木、王不留行、女贞子、桂枝、桑枝、益母草、红藤、伸筋草、陈皮、芍药花。",
+        ing_note: "成分以当前包装为准。如供应商更新配方，请同步更新本页面。",
+        mfg_h: "生产信息",
+        mfg_name_k: "生产企业",
+        mfg_name_v: "河南仲春艾草生物科技有限公司",
+        mfg_addr_k: "生产地址",
+        mfg_addr_v: "河南省确山县瓦岗镇（中国）",
+        mfg_origin_k: "产地",
+        mfg_origin_v: "中国制造",
+        formula_h: "配方说明（可选）",
+        formula_general_p: "如需显示配方简短说明，可在页面顶部选择 COLD / DAMP / SLEEP / SLIMMING。",
+        formula_cold_p: "COLD 配方：温润舒暖，适合容易怕冷的人群日常养护。",
+        formula_damp_p: "DAMP 配方：清爽舒适，适合潮湿或“身体沉重感”的日常养护。",
+        formula_sleep_p: "SLEEP 配方：放松安养，适合作为睡前放松仪式。",
+        formula_slimming_p: "SLIMMING 配方：支持活力日常，适合配合健康生活习惯使用。",
+        formula_claims: "建议避免医疗功效宣称，使用“养护/舒适/日常”类表述更稳妥。",
+        support_h: "客服支持",
+        support_p1: "如对使用有疑问，请联系购买渠道或门店客服。",
+        share_tip: "提示："
+      },
+      bm: {
+        tagline: "Menjadikan kesihatan lebih mudah dengan moxa",
+        title: "Pek Rendaman Kaki Mugwort",
+        note: "Halaman ini menyediakan cara penggunaan, peringatan, bahan-bahan dan maklumat pengilang.",
+        language_label: "Bahasa",
+        formula_label: "Formula",
+        formula_general: "Umum",
+        copy_link: "Salin pautan",
+        quick_1: "1 paket (30g)",
+        quick_2: "43–45°C",
+        quick_3: "20–25 minit",
+        directions_h: "Cara Penggunaan",
+        dir_1: "Masukkan 1 paket ke dalam bekas rendaman kaki.",
+        dir_2: "Tuangkan air panas dan rendam 3–5 minit untuk melepaskan kandungan herba.",
+        dir_3: "Tambahkan air sejuk sehingga suhu mencapai 43–45°C.",
+        dir_4: "Rendam kedua-dua kaki selama 20–25 minit.",
+        dir_tip: "Tip: Tambah air secara beransur dan uji suhu sebelum merendam kaki.",
+        caution_h: "Perhatian",
+        cau_1: "Untuk kegunaan luaran sahaja. Jangan dimakan.",
+        cau_2: "Tidak digalakkan untuk wanita hamil.",
+        cau_3: "Jangan gunakan pada kulit yang luka, bengkak, atau dijangkiti.",
+        cau_4: "Hentikan penggunaan serta-merta jika berlaku ketidakselesaan, kemerahan, kegatalan atau rasa panas.",
+        cau_5: "Jauhkan daripada capaian kanak-kanak.",
+        cau_6: "Produk ini bukan pengganti ubat-ubatan atau peranti perubatan.",
+        storage_h: "Penyimpanan",
+        storage_p: "Simpan di tempat yang sejuk dan kering. Elakkan cahaya matahari langsung. Tutup rapat selepas dibuka.",
+        ingredients_h: "Bahan-bahan",
+        ing_p: "Mugwort, Safflower, Kayu Sappan, Biji Vaccaria, Buah Privet Berkilat, Ranting Kayu Manis, Ranting Mulberi, Motherwort, Pokok Anggur Sargentodoxa, Herba Selaginella, Kulit Limau, Bunga Peony.",
+        ing_note: "Senarai bahan adalah berdasarkan pembungkusan semasa. Jika formula dikemas kini, sila kemas kini halaman ini.",
+        mfg_h: "Maklumat Pengilang",
+        mfg_name_k: "Pengilang",
+        mfg_name_v: "Henan Zhongchun Mugwort Biotechnology Co., Ltd.",
+        mfg_addr_k: "Alamat",
+        mfg_addr_v: "Pekan Wagang, Daerah Queshan, Wilayah Henan, China",
+        mfg_origin_k: "Asal",
+        mfg_origin_v: "Buatan China",
+        formula_h: "Nota Formula (Pilihan)",
+        formula_general_p: "Pilih formula di bahagian atas jika anda mahu halaman memaparkan nota ringkas (COLD / DAMP / SLEEP / SLIMMING).",
+        formula_cold_p: "Formula COLD: rutin pemanasan dan keselesaan; sesuai untuk mereka yang mudah rasa sejuk.",
+        formula_damp_p: "Formula DAMP: menyokong rasa segar dan selesa; sesuai untuk hari yang lembap.",
+        formula_sleep_p: "Formula SLEEP: rutin relaksasi; sesuai untuk sebelum tidur.",
+        formula_slimming_p: "Formula SLIMMING: menyokong rutin aktif; untuk tabiat kesejahteraan harian.",
+        formula_claims: "Elakkan tuntutan perubatan. Kekalkan bahasa yang berfokus kepada kesejahteraan.",
+        support_h: "Sokongan",
+        support_p1: "Jika anda mempunyai soalan tentang penggunaan, sila hubungi tempat pembelian.",
+        share_tip: "Tip:"
+      }
+    };
+
+    const langSelect = document.getElementById('langSelect');
+    const formulaSelect = document.getElementById('formulaSelect');
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const shareUrlEl = document.getElementById('shareUrl');
+    const yearEl = document.getElementById('year');
+
+    function applyLang(lang){
+      const dict = i18n[lang] || i18n.en;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key]) el.textContent = dict[key];
+      });
+      // Update formula "General" label inside dropdown (option text) for the selected lang
+      const generalOpt = formulaSelect.querySelector('option[value="general"]');
+      if(generalOpt) generalOpt.textContent = dict.formula_general || "General";
+      // Update URL in footer
+      shareUrlEl.textContent = window.location.href;
+    }
+
+    function showFormulaBlock(value){
+      document.querySelectorAll('.formulaBlock').forEach(b => b.classList.add('hide'));
+      const id = value === 'general' ? 'formula_general' : `formula_${value}`;
+      const el = document.getElementById(id);
+      if(el) el.classList.remove('hide');
+    }
+
+    function updateUrlParams(){
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', langSelect.value);
+      url.searchParams.set('formula', formulaSelect.value);
+      window.history.replaceState({}, '', url.toString());
+      shareUrlEl.textContent = url.toString();
+    }
+
+    function initFromParams(){
+      const url = new URL(window.location.href);
+      const lang = url.searchParams.get('lang');
+      const formula = url.searchParams.get('formula');
+
+      if(lang && ['en','zh','bm'].includes(lang)) langSelect.value = lang;
+      if(formula && ['general','cold','damp','sleep','slimming'].includes(formula)) formulaSelect.value = formula;
+
+      applyLang(langSelect.value);
+      showFormulaBlock(formulaSelect.value);
+      updateUrlParams();
+    }
+
+    langSelect.addEventListener('change', ()=>{
+      applyLang(langSelect.value);
+      updateUrlParams();
+    });
+
+    formulaSelect.addEventListener('change', ()=>{
+      showFormulaBlock(formulaSelect.value);
+      updateUrlParams();
+    });
+
+    copyLinkBtn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        const prev = copyLinkBtn.textContent;
+        copyLinkBtn.textContent = (langSelect.value === 'zh') ? '已复制' : (langSelect.value === 'bm' ? 'Disalin' : 'Copied');
+        setTimeout(()=>copyLinkBtn.textContent = prev, 1200);
+      }catch(e){
+        alert(window.location.href);
+      }
+    });
+
+    yearEl.textContent = new Date().getFullYear();
+    initFromParams();
+  </script>
 </body>
 </html>
