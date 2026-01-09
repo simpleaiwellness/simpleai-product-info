@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Information | 简艾 simple ai Wellness</title>
+    <title>Product Information | 简艾 Simple AI Wellness</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-bg: #FAFAF8;
+            --color-bg: #FDFDFB;
             --color-surface: #FFFFFF;
-            --color-primary: #2D5A4A;
-            --color-primary-light: #E8F0ED;
-            --color-warning: #C4652A;
-            --color-warning-light: #FEF3EB;
-            --color-danger: #B83535;
-            --color-danger-light: #FEECEC;
+            --color-primary: #1B5E3F;
+            --color-primary-dark: #14472F;
+            --color-primary-light: #E9F2ED;
+            --color-gold: #C9A855;
+            --color-gold-light: #FBF8F0;
+            --color-warning: #B8860B;
+            --color-warning-light: #FDF8E8;
+            --color-danger: #A63D2F;
+            --color-danger-light: #FDEEEB;
             --color-text: #1A1A1A;
             --color-text-secondary: #5A5A5A;
-            --color-border: #E5E5E3;
+            --color-border: #E8E6E1;
             --font-en: 'Plus Jakarta Sans', sans-serif;
             --font-cn: 'Noto Sans SC', sans-serif;
         }
@@ -45,7 +48,7 @@
         header {
             background: var(--color-surface);
             border-bottom: 1px solid var(--color-border);
-            padding: 1rem 1.25rem;
+            padding: 0.75rem 1.25rem;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -65,22 +68,9 @@
             gap: 0.5rem;
         }
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--color-primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.875rem;
-        }
-
-        .logo-text {
-            font-weight: 600;
-            font-size: 1rem;
+        .logo img {
+            height: 44px;
+            width: auto;
         }
 
         .lang-toggle {
@@ -105,7 +95,7 @@
 
         .lang-btn.active {
             background: var(--color-surface);
-            color: var(--color-text);
+            color: var(--color-primary);
             box-shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
 
@@ -118,11 +108,14 @@
         .product-header {
             text-align: center;
             margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--color-border);
         }
 
         .product-name {
             font-size: 1.5rem;
             font-weight: 600;
+            color: var(--color-primary-dark);
             margin-bottom: 0.25rem;
         }
 
@@ -204,14 +197,15 @@
         .list-number {
             width: 22px;
             height: 22px;
-            background: var(--color-bg);
+            background: var(--color-gold-light);
+            border: 1px solid var(--color-gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 0.75rem;
             font-weight: 600;
-            color: var(--color-text-secondary);
+            color: var(--color-gold);
             flex-shrink: 0;
             margin-top: 0.125rem;
         }
@@ -232,7 +226,7 @@
 
         .warning-box {
             background: var(--color-warning-light);
-            border: 1px solid #F5D4BC;
+            border: 1px solid #E8D9A8;
             border-radius: 8px;
             padding: 1rem;
         }
@@ -263,7 +257,7 @@
 
         .danger-box {
             background: var(--color-danger-light);
-            border: 1px solid #F5C4C4;
+            border: 1px solid #EBBFBA;
             border-radius: 8px;
             padding: 1rem;
         }
@@ -279,6 +273,7 @@
         .contact-section {
             text-align: center;
             padding: 1.5rem;
+            background: linear-gradient(to bottom, var(--color-surface), var(--color-gold-light));
         }
 
         .contact-title {
@@ -316,13 +311,13 @@
         }
 
         .contact-btn.email {
-            background: var(--color-bg);
+            background: var(--color-surface);
             color: var(--color-text);
             border: 1px solid var(--color-border);
         }
 
         .contact-btn.email:hover {
-            background: var(--color-border);
+            background: var(--color-bg);
         }
 
         .contact-btn svg {
@@ -332,14 +327,23 @@
 
         footer {
             text-align: center;
-            padding: 1rem;
+            padding: 1.5rem 1rem;
             color: var(--color-text-secondary);
             font-size: 0.8125rem;
+            border-top: 1px solid var(--color-border);
+            background: var(--color-surface);
         }
 
         footer a {
             color: var(--color-primary);
             text-decoration: none;
+        }
+
+        footer .footer-logo {
+            height: 32px;
+            width: auto;
+            margin-bottom: 0.5rem;
+            opacity: 0.8;
         }
 
         /* Language visibility */
@@ -370,8 +374,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <div class="logo-icon cn">艾</div>
-                <span class="logo-text">简艾 Simple AI</span>
+                <img src="/images/simpleai-logo.png" alt="简艾 Simple AI Wellness">
             </div>
             <div class="lang-toggle">
                 <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -517,7 +520,8 @@
     </main>
 
     <footer>
-        <p>© 2025 简艾 simple ai Wellness</p>
+        <img src="/images/simpleai-logo.png" alt="简艾" class="footer-logo">
+        <p>© 2025 简艾 Simple AI Wellness</p>
         <p><a href="https://simpleaiwellness.com">simpleaiwellness.com</a></p>
     </footer>
 
