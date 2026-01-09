@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="simple ai Mugwort Footbath Pack — Directions, cautions, ingredients, and manufacturer information." />
+  <title>simple ai | Mugwort Footbath Pack</title>
+  <style>
+    :root{
+      --bg:#ffffff;
+      --fg:#111111;
+      --muted:#666666;
+      --card:#f6f6f6;
+      --border:#e6e6e6;
+      --accent:#0b6b3a;
+      --warn:#8a3d00;
+      --shadow: 0 8px 24px rgba(0,0,0,.08);
+      --radius: 18px;
+      --max: 760px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--fg);
+      background:linear-gradient(180deg, #fbfbfb 0%, var(--bg) 40%);
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    header{
+      padding:18px 18px 8px;
+      border-bottom:1px solid var(--border);
+      background:rgba(255,255,255,.85);
+      backdrop-filter:saturate(1.2) blur(8px);
+      position:sticky; top:0; z-index:10;
+    }
+    .wrap{max-width:var(--max); margin:0 auto}
+    .top{
+      display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    }
+    .brand{
+      display:flex; flex-direction:column; gap:2px;
+      min-width: 240px;
+    }
+    .brand .name{font-weight:700; letter-spacing:.2px}
+    .brand .sub{color:var(--muted); font-size:13px}
+    .controls{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 10px; border:1px solid var(--border); border-radius:999px; background:#fff;
+      box-shadow: 0 1px 0 rgba(0,0,0,.02);
+    }
+    select, button{
+      font:inherit;
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius:999px;
+      padding:8px 10px;
+      cursor:pointer;
+    }
+    button.primary{
+      background:var(--accent);
+      border-color:var(--accent);
+      color:#fff;
+    }
+    main{padding:18px}
+    .hero{
+      display:flex; flex-direction:column; gap:10px;
+      padding:18px; border:1px solid var(--border); border-radius:var(--radius);
+      background:#fff;
+      box-shadow: var(--shadow);
+    }
+    .hero h1{margin:0; font-size:22px; line-height:1.2}
+    .badges{display:flex; gap:8px; flex-wrap:wrap}
+    .badge{
+      padding:6px 10px; border-radius:999px; background:var(--card);
+      border:1px solid var(--border); font-size:13px; color:#222;
+    }
+    .grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:14px;
+    }
+    @media (min-width: 740px){
+      .grid{grid-template-columns: 1fr 1fr;}
+    }
+    section.card{
+      padding:16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    }
+    section.card h2{margin:0 0 10px; font-size:16px}
+    .muted{color:var(--muted)}
+    ol, ul{margin:10px 0 0 18px; padding:0}
+    li{margin:6px 0}
+    .callout{
+      border-left:4px solid var(--warn);
+      background: #fff7f0;
+      padding:12px 12px 12px 14px;
+      border-radius: 12px;
+      border:1px solid #ffe3cf;
+    }
+    .kv{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap:8px 12px;
+      margin-top:8px;
+      font-size:14px;
+    }
+    .kv div.k{color:var(--muted)}
+    .footer{
+      margin:18px 0 30px;
+      padding:14px 16px;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      background:var(--card);
+      color:#333;
+      font-size:13px;
+    }
+    .small{font-size:12px}
+    .mono{font-family:var(--mono)}
+    .lang-note{font-size:12px; color:var(--muted)}
+    .hide{display:none!important}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap top">
+      <div class="brand" aria-label="Brand">
+        <div class="name">simple ai 简艾</div>
+        <div class="sub" data-i18n="tagline">Making Wellness Simple with Moxa</div>
+      </div>
+
+      <div class="controls" aria-label="Controls">
+        <div class="pill" title="Select formula (optional)">
+          <span class="muted" data-i18n="formula_label">Formula</span>
+          <select id="formulaSelect" aria-label="Formula">
+            <option value="general" selected data-i18n="formula_general">General</option>
+            <option value="cold">COLD</option>
+            <option value="damp">DAMP</option>
+            <option value="sleep">SLEEP</option>
+            <option value="slimming">SLIMMING</option>
+          </select>
+        </div>
+
+        <div class="pill" title="Choose language">
+          <span class="muted" data-i18n="language_label">Language</span>
+          <select id="langSelect" aria-label="Language">
+            <option value="en" selected>English</option>
+            <option value="zh">中文</option>
+            <option value="bm">BM</option>
+          </select>
+        </div>
+
+        <button id="copyLinkBtn" class="primary" type="button" data-i18n="copy_link">Copy link</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <div class="hero" role="region" aria-label="Product overview">
+        <h1 data-i18n="title">Mugwort Footbath Pack</h1>
+        <div class="badges" aria-label="Quick facts">
+          <span class="badge" data-i18n="quick_1">1 sachet (30g)</span>
+          <span class="badge" data-i18n="quick_2">43–45°C</span>
+          <span class="badge" data-i18n="quick_3">20–25 minutes</span>
+        </div>
+        <div class="lang-note" data-i18n="note">
+          This page provides directions, cautions, ingredients, and manufacturer information for the product.
+        </div>
+      </div>
+
+      <div class="grid" aria-label="Content">
+        <section class="card" aria-label="Directions">
+          <h2 data-i18n="directions_h">Directions for Use</h2>
+          <ol>
+            <li data-i18n="dir_1">Place 1 sachet into a foot tub.</li>
+            <li data-i18n="dir_2">Add hot water and steep 3–5 minutes to release the herbs.</li>
+            <li data-i18n="dir_3">Adjust temperature to 43–45°C.</li>
+            <li data-i18n="dir_4">Soak feet for 20–25 minutes.</li>
+          </ol>
+          <div class="small muted" style="margin-top:10px" data-i18n="dir_tip">
+            Tip: Add water gradually and test temperature before soaking.
+          </div>
+        </section>
+
+        <section class="card" aria-label="Caution">
+          <h2 data-i18n="caution_h">Caution</h2>
+          <div class="callout">
+            <ul>
+              <li data-i18n="cau_1">For external use only. Do not ingest.</li>
+              <li data-i18n="cau_2">Not recommended during pregnancy.</li>
+              <li data-i18n="cau_3">Do not use on broken, swollen, or infected skin.</li>
+              <li data-i18n="cau_4">Discontinue use if discomfort, redness, itching, or burning occurs.</li>
+              <li data-i18n="cau_5">Keep out of reach of children.</li>
+              <li data-i18n="cau_6">This product is not a substitute for medicines or medical devices.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card" aria-label="Storage">
+          <h2 data-i18n="storage_h">Storage</h2>
+          <p class="muted" style="margin:0" data-i18n="storage_p">
+            Store in a cool, dry place. Avoid direct sunlight. Keep sealed after opening.
+          </p>
+        </section>
+
+        <section class="card" aria-label="Ingredients">
+          <h2 data-i18n="ingredients_h">Ingredients</h2>
+          <p class="muted" style="margin:0" data-i18n="ing_p">
+            Mugwort, Safflower, Sappan Wood, Vaccaria Seed, Glossy Privet Fruit, Cinnamon Twig, Mulberry Twig,
+            Motherwort, Sargentodoxa Vine, Selaginella Herb, Tangerine Peel, Peony Flower.
+          </p>
+          <div class="small muted" style="margin-top:10px" data-i18n="ing_note">
+            Ingredients listed reflect the current packaging. If your supplier updates the formula, update this page accordingly.
+          </div>
+        </section>
+
+        <section class="card" aria-label="Manufacturer">
+          <h2 data-i18n="mfg_h">Manufacturer Information</h2>
+          <div class="kv" role="list">
+            <div class="k" role="listitem" data-i18n="mfg_name_k">Manufacturer</div>
+            <div data-i18n="mfg_name_v">Henan Zhongchun Mugwort Biotechnology Co., Ltd.</div>
+
+            <div class="k" role="listitem" data-i18n="mfg_addr_k">Address</div>
+            <div data-i18n="mfg_addr_v">Wagang Town, Queshan County, Henan Province, China</div>
+
+            <div class="k" role="listitem" data-i18n="mfg_origin_k">Origin</div>
+            <div data-i18n="mfg_origin_v">Made in China</div>
+          </div>
+        </section>
+
+        <section class="card" aria-label="Formula notes">
+          <h2 data-i18n="formula_h">Formula Notes (Optional)</h2>
+
+          <div id="formula_general" class="formulaBlock">
+            <p class="muted" style="margin:0" data-i18n="formula_general_p">
+              Select a formula at the top if you want the page to display an additional short note (for example, COLD / DAMP / SLEEP / SLIMMING).
+            </p>
+          </div>
+
+          <div id="formula_cold" class="formulaBlock hide">
+            <p class="muted" style="margin:0" data-i18n="formula_cold_p">
+              COLD formula: warming and soothing; intended for those who feel cold easily.
+            </p>
+          </div>
+
+          <div id="formula_damp" class="formulaBlock hide">
+            <p class="muted" style="margin:0" data-i18n="formula_damp_p">
+              DAMP formula: supports comfort and freshness; intended for humid or “heavy” feeling days.
+            </p>
+          </div>
+
+          <div id="formula_sleep" class="formulaBlock hide">
+            <p class="muted" style="margin:0" data-i18n="formula_sleep_p">
+              SLEEP formula: relaxing routine; intended for winding down before bedtime.
+            </p>
+          </div>
+
+          <div id="formula_slimming" class="formulaBlock hide">
+            <p class="muted" style="margin:0" data-i18n="formula_slimming_p">
+              SLIMMING formula: supports an active routine; intended for everyday wellness habits.
+            </p>
+          </div>
+
+          <div class="small muted" style="margin-top:10px" data-i18n="formula_claims">
+            Please avoid medical claims on this page. Keep wording wellness-oriented.
+          </div>
+        </section>
+      </div>
+
+      <div class="footer" role="contentinfo">
+        <div><strong data-i18n="support_h">Support</strong></div>
+        <div class="small" style="margin-top:6px">
+          <span data-i18n="support_p1">If you have questions about usage, please contact your point of purchase.</span>
+        </div>
+        <div class="small" style="margin-top:10px">
+          <span class="muted" data-i18n="share_tip">Tip:</span>
+          <span class="mono" id="shareUrl"></span>
+        </div>
+      </div>
+
+      <div class="small muted" style="text-align:center; padding-bottom:18px">
+        © <span id="year"></span> simpleaiwellness.com
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const i18n = {
+      en: {
+        tagline: "Making Wellness Simple with Moxa",
+        title: "Mugwort Footbath Pack",
+        note: "This page provides directions, cautions, ingredients, and manufacturer information for the product.",
+        language_label: "Language",
+        formula_label: "Formula",
+        formula_general: "General",
+        copy_link: "Copy link",
+        quick_1: "1 sachet (30g)",
+        quick_2: "43–45°C",
+        quick_3: "20–25 minutes",
+        directions_h: "Directions for Use",
+        dir_1: "Place 1 sachet into a foot tub.",
+        dir_2: "Add hot water and steep 3–5 minutes to release the herbs.",
+        dir_3: "Adjust temperature to 43–45°C.",
+        dir_4: "Soak feet for 20–25 minutes.",
+        dir_tip: "Tip: Add water gradually and test temperature before soaking.",
+        caution_h: "Caution",
+        cau_1: "For external use only. Do not ingest.",
+        cau_2: "Not recommended during pregnancy.",
+        cau_3: "Do not use on broken, swollen, or infected skin.",
+        cau_4: "Discontinue use if discomfort, redness, itching, or burning occurs.",
+        cau_5: "Keep out of reach of children.",
+        cau_6: "This product is not a substitute for medicines or medical devices.",
+        storage_h: "Storage",
+        storage_p: "Store in a cool, dry place. Avoid direct sunlight. Keep sealed after opening.",
+        ingredients_h: "Ingredients",
+        ing_p: "Mugwort, Safflower, Sappan Wood, Vaccaria Seed, Glossy Privet Fruit, Cinnamon Twig, Mulberry Twig, Motherwort, Sargentodoxa Vine, Selaginella Herb, Tangerine Peel, Peony Flower.",
+        ing_note: "Ingredients listed reflect the current packaging. If your supplier updates the formula, update this page accordingly.",
+        mfg_h: "Manufacturer Information",
+        mfg_name_k: "Manufacturer",
+        mfg_name_v: "Henan Zhongchun Mugwort Biotechnology Co., Ltd.",
+        mfg_addr_k: "Address",
+        mfg_addr_v: "Wagang Town, Queshan County, Henan Province, China",
+        mfg_origin_k: "Origin",
+        mfg_origin_v: "Made in China",
+        formula_h: "Formula Notes (Optional)",
+        formula_general_p: "Select a formula at the top if you want the page to display an additional short note (for example, COLD / DAMP / SLEEP / SLIMMING).",
+        formula_cold_p: "COLD formula: warming and soothing; intended for those who feel cold easily.",
+        formula_damp_p: "DAMP formula: supports comfort and freshness; intended for humid or “heavy” feeling days.",
+        formula_sleep_p: "SLEEP formula: relaxing routine; intended for winding down before bedtime.",
+        formula_slimming_p: "SLIMMING formula: supports an active routine; intended for everyday wellness habits.",
+        formula_claims: "Please avoid medical claims on this page. Keep wording wellness-oriented.",
+        support_h: "Support",
+        support_p1: "If you have questions about usage, please contact your point of purchase.",
+        share_tip: "Tip:"
+      },
+      zh: {
+        tagline: "用艾让健康更简单",
+        title: "艾草足浴包",
+        note: "本页面提供使用方法、注意事项、成分与生产信息。",
+        language_label: "语言",
+        formula_label: "配方",
+        formula_general: "通用",
+        copy_link: "复制链接",
+        quick_1: "1包（30g）",
+        quick_2: "43–45°C",
+        quick_3: "20–25分钟",
+        directions_h: "使用方法",
+        dir_1: "取 1 包足浴包置入足浴盆中。",
+        dir_2: "倒入热水浸泡 3–5 分钟以释放草本成分。",
+        dir_3: "加入冷水调至 43–45°C。",
+        dir_4: "浸泡双脚 20–25 分钟。",
+        dir_tip: "提示：加水时请逐步调温，并先试温再泡脚。",
+        caution_h: "注意事项",
+        cau_1: "仅供外用，不可内服。",
+        cau_2: "孕期人士不建议使用。",
+        cau_3: "脚部有伤口、红肿或严重皮肤状况者请勿使用。",
+        cau_4: "若出现不适、红痒或灼热感，请立即停止使用。",
+        cau_5: "请置于儿童无法取得的地方。",
+        cau_6: "本产品不能替代药品和医疗器械。",
+        storage_h: "保存方式",
+        storage_p: "置于阴凉干燥处，避免阳光直射。开封后请密封保存。",
+        ingredients_h: "成分",
+        ing_p: "艾段、红花、苏木、王不留行、女贞子、桂枝、桑枝、益母草、红藤、伸筋草、陈皮、芍药花。",
+        ing_note: "成分以当前包装为准。如供应商更新配方，请同步更新本页面。",
+        mfg_h: "生产信息",
+        mfg_name_k: "生产企业",
+        mfg_name_v: "河南仲春艾草生物科技有限公司",
+        mfg_addr_k: "生产地址",
+        mfg_addr_v: "河南省确山县瓦岗镇（中国）",
+        mfg_origin_k: "产地",
+        mfg_origin_v: "中国制造",
+        formula_h: "配方说明（可选）",
+        formula_general_p: "如需显示配方简短说明，可在页面顶部选择 COLD / DAMP / SLEEP / SLIMMING。",
+        formula_cold_p: "COLD 配方：温润舒暖，适合容易怕冷的人群日常养护。",
+        formula_damp_p: "DAMP 配方：清爽舒适，适合潮湿或“身体沉重感”的日常养护。",
+        formula_sleep_p: "SLEEP 配方：放松安养，适合作为睡前放松仪式。",
+        formula_slimming_p: "SLIMMING 配方：支持活力日常，适合配合健康生活习惯使用。",
+        formula_claims: "建议避免医疗功效宣称，使用“养护/舒适/日常”类表述更稳妥。",
+        support_h: "客服支持",
+        support_p1: "如对使用有疑问，请联系购买渠道或门店客服。",
+        share_tip: "提示："
+      },
+      bm: {
+        tagline: "Menjadikan kesihatan lebih mudah dengan moxa",
+        title: "Pek Rendaman Kaki Mugwort",
+        note: "Halaman ini menyediakan cara penggunaan, peringatan, bahan-bahan dan maklumat pengilang.",
+        language_label: "Bahasa",
+        formula_label: "Formula",
+        formula_general: "Umum",
+        copy_link: "Salin pautan",
+        quick_1: "1 paket (30g)",
+        quick_2: "43–45°C",
+        quick_3: "20–25 minit",
+        directions_h: "Cara Penggunaan",
+        dir_1: "Masukkan 1 paket ke dalam bekas rendaman kaki.",
+        dir_2: "Tuangkan air panas dan rendam 3–5 minit untuk melepaskan kandungan herba.",
+        dir_3: "Tambahkan air sejuk sehingga suhu mencapai 43–45°C.",
+        dir_4: "Rendam kedua-dua kaki selama 20–25 minit.",
+        dir_tip: "Tip: Tambah air secara beransur dan uji suhu sebelum merendam kaki.",
+        caution_h: "Perhatian",
+        cau_1: "Untuk kegunaan luaran sahaja. Jangan dimakan.",
+        cau_2: "Tidak digalakkan untuk wanita hamil.",
+        cau_3: "Jangan gunakan pada kulit yang luka, bengkak, atau dijangkiti.",
+        cau_4: "Hentikan penggunaan serta-merta jika berlaku ketidakselesaan, kemerahan, kegatalan atau rasa panas.",
+        cau_5: "Jauhkan daripada capaian kanak-kanak.",
+        cau_6: "Produk ini bukan pengganti ubat-ubatan atau peranti perubatan.",
+        storage_h: "Penyimpanan",
+        storage_p: "Simpan di tempat yang sejuk dan kering. Elakkan cahaya matahari langsung. Tutup rapat selepas dibuka.",
+        ingredients_h: "Bahan-bahan",
+        ing_p: "Mugwort, Safflower, Kayu Sappan, Biji Vaccaria, Buah Privet Berkilat, Ranting Kayu Manis, Ranting Mulberi, Motherwort, Pokok Anggur Sargentodoxa, Herba Selaginella, Kulit Limau, Bunga Peony.",
+        ing_note: "Senarai bahan adalah berdasarkan pembungkusan semasa. Jika formula dikemas kini, sila kemas kini halaman ini.",
+        mfg_h: "Maklumat Pengilang",
+        mfg_name_k: "Pengilang",
+        mfg_name_v: "Henan Zhongchun Mugwort Biotechnology Co., Ltd.",
+        mfg_addr_k: "Alamat",
+        mfg_addr_v: "Pekan Wagang, Daerah Queshan, Wilayah Henan, China",
+        mfg_origin_k: "Asal",
+        mfg_origin_v: "Buatan China",
+        formula_h: "Nota Formula (Pilihan)",
+        formula_general_p: "Pilih formula di bahagian atas jika anda mahu halaman memaparkan nota ringkas (COLD / DAMP / SLEEP / SLIMMING).",
+        formula_cold_p: "Formula COLD: rutin pemanasan dan keselesaan; sesuai untuk mereka yang mudah rasa sejuk.",
+        formula_damp_p: "Formula DAMP: menyokong rasa segar dan selesa; sesuai untuk hari yang lembap.",
+        formula_sleep_p: "Formula SLEEP: rutin relaksasi; sesuai untuk sebelum tidur.",
+        formula_slimming_p: "Formula SLIMMING: menyokong rutin aktif; untuk tabiat kesejahteraan harian.",
+        formula_claims: "Elakkan tuntutan perubatan. Kekalkan bahasa yang berfokus kepada kesejahteraan.",
+        support_h: "Sokongan",
+        support_p1: "Jika anda mempunyai soalan tentang penggunaan, sila hubungi tempat pembelian.",
+        share_tip: "Tip:"
+      }
+    };
+
+    const langSelect = document.getElementById('langSelect');
+    const formulaSelect = document.getElementById('formulaSelect');
+    const copyLinkBtn = document.getElementById('copyLinkBtn');
+    const shareUrlEl = document.getElementById('shareUrl');
+    const yearEl = document.getElementById('year');
+
+    function applyLang(lang){
+      const dict = i18n[lang] || i18n.en;
+      document.querySelectorAll('[data-i18n]').forEach(el=>{
+        const key = el.getAttribute('data-i18n');
+        if(dict[key]) el.textContent = dict[key];
+      });
+      // Update formula "General" label inside dropdown (option text) for the selected lang
+      const generalOpt = formulaSelect.querySelector('option[value="general"]');
+      if(generalOpt) generalOpt.textContent = dict.formula_general || "General";
+      // Update URL in footer
+      shareUrlEl.textContent = window.location.href;
+    }
+
+    function showFormulaBlock(value){
+      document.querySelectorAll('.formulaBlock').forEach(b => b.classList.add('hide'));
+      const id = value === 'general' ? 'formula_general' : `formula_${value}`;
+      const el = document.getElementById(id);
+      if(el) el.classList.remove('hide');
+    }
+
+    function updateUrlParams(){
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', langSelect.value);
+      url.searchParams.set('formula', formulaSelect.value);
+      window.history.replaceState({}, '', url.toString());
+      shareUrlEl.textContent = url.toString();
+    }
+
+    function initFromParams(){
+      const url = new URL(window.location.href);
+      const lang = url.searchParams.get('lang');
+      const formula = url.searchParams.get('formula');
+
+      if(lang && ['en','zh','bm'].includes(lang)) langSelect.value = lang;
+      if(formula && ['general','cold','damp','sleep','slimming'].includes(formula)) formulaSelect.value = formula;
+
+      applyLang(langSelect.value);
+      showFormulaBlock(formulaSelect.value);
+      updateUrlParams();
+    }
+
+    langSelect.addEventListener('change', ()=>{
+      applyLang(langSelect.value);
+      updateUrlParams();
+    });
+
+    formulaSelect.addEventListener('change', ()=>{
+      showFormulaBlock(formulaSelect.value);
+      updateUrlParams();
+    });
+
+    copyLinkBtn.addEventListener('click', async ()=>{
+      try{
+        await navigator.clipboard.writeText(window.location.href);
+        const prev = copyLinkBtn.textContent;
+        copyLinkBtn.textContent = (langSelect.value === 'zh') ? '已复制' : (langSelect.value === 'bm' ? 'Disalin' : 'Copied');
+        setTimeout(()=>copyLinkBtn.textContent = prev, 1200);
+      }catch(e){
+        alert(window.location.href);
+      }
+    });
+
+    yearEl.textContent = new Date().getFullYear();
+    initFromParams();
+  </script>
+</body>
+</html>
