@@ -484,6 +484,41 @@
             text-decoration: none;
         }
 
+        footer .company-info {
+            max-width: 760px;
+            margin: 0 auto 1.5rem;
+            line-height: 1.7;
+        }
+
+        footer .company-name {
+            color: var(--color-text-secondary);
+            font-weight: 600;
+            font-size: 0.9375rem;
+        }
+
+        footer .company-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 1.25rem 0;
+        }
+
+        footer .company-label {
+            color: var(--color-text-secondary);
+            font-weight: 600;
+        }
+
+        footer .cn {
+            font-family: var(--font-cn);
+        }
+
+        @media (max-width: 768px) {
+            footer .company-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             nav {
@@ -748,8 +783,25 @@
 
     <footer>
         <img src="/images/simpleai-logo.png" alt="简艾 simple ai Wellness">
-        <p>© 2025 简艾 simple ai Wellness. All rights reserved.</p>
-        <p><a href="mailto:contact@simpleaiwellness.com">contact@simpleaiwellness.com</a></p>
+        <div class="company-info">
+            <p class="company-name">Simple Zone Sdn. Bhd.</p>
+            <p>Registration No. <span class="cn">公司注册号</span>: 201601039393 (1210334-M)</p>
+            <div class="company-grid">
+                <div>
+                    <p class="company-label">Registered Office <span class="cn">注册办事处</span></p>
+                    <p>74, Jalan Bukit Impian 7, Taman Impian Emas,<br>81300 Skudai, Johor, Malaysia</p>
+                </div>
+                <div>
+                    <p class="company-label">Kuching Outlet <span class="cn">古晋门店</span></p>
+                    <p>Lot 2978, Ground Floor, Block 10, KCLD,<br>Jalan Tun Ahmad Zaidi Adruce, Jalan Keretapi,<br>93150 Kuching, Sarawak, Malaysia</p>
+                    <p>Tel <span class="cn">电话</span>: <a href="tel:+60198780393">+60 19-878 0393</a></p>
+                </div>
+            </div>
+            <p class="company-label">Business Enquiries <span class="cn">商务洽谈</span></p>
+            <p>Tel <span class="cn">电话</span>: <a href="tel:+60126731309">+60 12-673 1309</a></p>
+            <p>Email <span class="cn">电邮</span>: <a href="mailto:contact@simpleaiwellness.com">contact@simpleaiwellness.com</a></p>
+        </div>
+        <p>© 2026 Simple Zone Sdn. Bhd. (<span class="cn">简艾</span> simple ai Wellness). All rights reserved. <span class="cn">版权所有。</span></p>
     </footer>
 </body>
 </html>
